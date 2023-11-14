@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    position: relative;
+}
+
+.cursor {
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+h1 {
+   position: absolute;
+    color: white;
+    font-size: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}

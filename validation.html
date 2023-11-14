@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <h1>User Information</h1>
+    <label> Name</label>
+    <input type="text" oninput="validatename()" name="fname" id="fname" >
+    <p id="namevali" style="color:red;"><small id="small" style ="color:red"> </small></p>
+    <label>Birthdate</label>
+    <input id="Birthdate" oninput="validatebirth()" name="Birthdate" type="date">
+    <p id="datevali" style="color:red;" ><small > </small></p>
+    <label> Age: </label>
+    <p id="age"></p>
+
+    <label>Contact Number</label>
+    <input type="number" id="phone" oninput="phnvalidate()">
+    <p id="phnvali" style="color:red;"></p>
+    <label>Country</label>
+    <select id="countryselect">
+    <label>State</label>
+    <select id="stateselect">
+               
+    </select>
+    <button type="submit" id="formsubmit"> Submit</button>
+</body>
+</html>
+<script>
+function validatename(){
+    var name=document.getElementById("fname").value;
+    if(name.length<=3){
+        document.getElementById("namevali").innerHTML="Name cannot be less than 3 characters";
+    }
+    else{
+        document.getElementById("namevali").innerHTML="";
+    }
+}
+   
+   function validatebirth(){
+    var dateinput= document.getElementById("Birthdate").value; //is in string
+    var dob=new Date(dateinput);
+    var date=new Date();
+    if(dob>date){
+    document.getElementById("datevali").innerHTML="Date cannot be from future";
+
+    }
+    if(dob.getFullYear()<1900){
+        document.getElementById("datevali").innerHTML="Please enter correct date";
+    }
+    
+    if( date.getFullYear()-dob.getFullYear()  < 18 && date.getFullYear()-dob.getFullYear()  >=0){
+        document.getElementById("datevali").innerHTML="You are underage";
+        document.getElementById("age").innerHTML=date.getFullYear()-dob.getFullYear();
+    }
+    else{
+        document.getElementById("datevali").innerHTML=" ";
+        document.getElementById("age").innerHTML=date.getFullYear()-dob.getFullYear();
+    }
+
+   }
+   function phnvalidate(){
+    var number=document.getElementById("phone").value;
+    if( number.length!=10  ){
+        document.getElementById("phnvali").innerHTML="Phone number not valid. Enter a 10 digit number ";
+    }
+    else {
+        document.getElementById("phnvali").innerHTML=" ";
+    }
+   }
+
+
+   const countries = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+  "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+  "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
+  "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the",
+  "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+  "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland",
+  "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+  "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
+  "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North",
+  "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya",
+  "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+  "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique",
+  "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia",
+  "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+  "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa",
+  "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia",
+  "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
+  "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia",
+  "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+  "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+countries.forEach(country=>{
+    const option =document.createElement("option");
+    option.text=country;
+    countryselect.add(option);
+});
+
+
+</script>
